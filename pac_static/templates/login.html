@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block title %} Settings {% endblock %}
+{% block content %}
+<div id="main">
+        <div class="post">
+            <div class="right">
+                <h1>Login</h1>
+                <form class="wide" action="/edit/editViewLoginUser" method="post">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                    <p>
+                        <button>Login</button>
+                    </p>
+                </form>
+            </div>
+            <div class="left">
+                <div class="post-meta">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

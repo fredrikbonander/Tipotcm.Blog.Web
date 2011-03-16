@@ -1,0 +1,14 @@
+<ul>
+{% for item in pageTree %}
+    <li{% ifequal currentView.itemId item.page.key.id|stringformat:"s" %} class="active"{% endifequal %}>
+        {% if item.page.key.id %}
+            <a href="/edit/Pages/?item_id={{ item.page.key.id }}"><span class="ui-icon ui-icon-document"></span>{{ item.page.name }}</a>
+        {% else %}
+            <a href="/edit/Pages/?item_id=1"><span class="ui-icon ui-icon-document"></span>{{ item.page.name }}</a>
+        {% endif %}
+        {% if item.children %}
+            {% PageTree item.children currentView %}
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>

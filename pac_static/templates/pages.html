@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+    <div id="main">
+        <div class="post">
+            <!--<div class="actions"><a class="floatRight ui-state-default ui-corner-all" href="/edit/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></div>-->
+            <div class="right">
+                {% if pageTemplate %}
+                    {% include "modules/update_page.html" %}
+                {% else %}
+                    <p>Here you can edit the content of the different pages. Select the page you want to edit from the page tree to your left. Or click the "New page" button to your right.</p>
+                {% endif %}
+            </div>
+            <div class="left">
+                <div class="post-meta">
+                    <h4>PageTree</h4>
+                    {% PageTree pageTree currentView %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="page-settings">
+            <h3>Sidebar</h3>
+            <p>Add a new page to the site by clicking the "New page" button below.</p>
+            <p><a class="button" href="/edit/Pages/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></p>
+         </div>
+        {% if pageTemplate %}
+        <div class="sidemenu">
+            <h3>Page Settings</h3>
+            <ul>
+                <li>
+                    <ul>
+                        <li><strong>Is Startpage?:</strong> If checked this page will be the first page users comes to when visiting the page.</li>
+                        <li><strong>Sort index:</strong> This is an indicator of where the page should be shown in the page tree. A low number will show the page higher up the page tree.</li>
+                    </ul>
+                    <form action="/edit/editViewUpdatePageSettings" method="post">
+                        <input type="hidden" name="page_string_key" value="{{ pageTemplate.pageKey }}" />
+                        <label><input type="checkbox" name="is_startpage"{% if currentView.currentPage.startPage %} checked="checked"{% endif %} /> Is Startpage?</label>
+                        <label for="sortindex">Sort index:</label>
+                        <input type="text" id="sortindex" name="sortindex" value="{{ currentView.currentPage.sortIndex }}" />
+                        <button>Save</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="sidemenu">
+            <h3>Page Delete</h3>
+            <ul>
+                <li>
+                    <form action="/edit/editViewDeletePage" method="post">
+                        <input type="hidden" name="page_string_key" value="{{ pageTemplate.pageKey }}" />
+                        <span>If you delete this page all content will be lost. This action is not reversible.</span>
+                        <button>Delete</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </aside>
+{% endblock %}

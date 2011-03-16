@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}pac{%endblock%} - Pac</title>
+        <link rel="stylesheet" href="/pac_static/ui/styles/custom-theme/jquery-ui-1.8.6.custom.css" type="text/css" />
+        <link rel="stylesheet" href="/pac_static/ui/styles/reset.css" type="text/css" />
+        <link rel="stylesheet" href="/pac_static/ui/styles/coolblue.css" type="text/css" />
+        <link rel="stylesheet" href="/pac_static/ui/styles/enhancements.css" type="text/css" />
+    </head>
+    <body id="index" class="home">
+        <!--header -->
+        <div id="header-wrap">
+            <div id="header">
+                <a name="top"></a>
+
+                <h1 id="logo-text"><a href="/edit/" title=""><img src="/pac_static/ui/images/logo.png" alt="{pac}" /></a></h1>
+                <p id="slogan">Python App Engine CMS</p>
+
+                {% include "modules/top_menu.html" %}
+
+               <!--<p id="rss">
+                  <a href="index.html">Grab the RSS feed</a>
+               </p>-->
+               <!--
+               <form id="quick-search" method="get" action="index.html">
+                  <fieldset class="search">
+                     <label for="qsearch">Search:</label>
+                     <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+                     <button class="btn" title="Submit Search">Search</button>
+                  </fieldset>
+               </form>
+               -->
+            </div>
+        </div>
+        <!--/header-->
+        <section id="content-wrap" class="clear">
+            <div id="content">
+                <div class="status_placeholder">
+                    {% include "modules/statusmessages.html" %}
+                </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </section>
+        <footer>
+            <!-- footer-outer -->
+            <div id="footer-outer" class="clear"><div id="footer-wrap">
+                <div class="col-a">
+                    <h3>Contact</h3>
+                    <p><strong>E-mail: </strong>gae@cloudnine.se</p>
+                </div>
+                <div class="col-a">
+                    <h3>Issues</h3>
+                    <div class="footer-list">
+                        <ul>
+                            <li><a title="Issue Tracker" href="http://youtrack.cloudnine.se/issues/map" rel="nofollow">Issue tracker</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-a">
+                <h3>Credits</h3>
+                    <div class="footer-list">
+                        <ul>
+                            <li>
+                                <a href="http://twitter.com/fbonander">Code by: Fredrik</a>
+                            </li>
+                            <li>
+                                <a href="#">Additional design: Kristoffer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-b">
+                    <h3>Developers</h3>
+                    <div class="footer-list">
+                        <ul>
+                            <li><a href="https://github.com/fredrikbonander/pac">Source code @ github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            <!-- /footer-outer -->
+            </div></div>
+
+            <!-- footer-bottom -->
+            <div id="footer-bottom">
+
+                <p class="bottom-left">
+                    &copy; 2010 <strong>Copyright? Nope, don't do copyright.</strong>&nbsp; &nbsp; &nbsp; Based on template from
+                    <a href="http://www.bluewebtemplates.com/" title="Website Templates">website templates</a> @ <a href="http://www.styleshout.com/">styleshout</a>
+                </p>
+
+                <p class="bottom-right">
+                    <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> |
+                   <a href="http://validator.w3.org/check/referer">XHTML</a>	|
+                  <strong><a href="#top">Back to Top</a></strong>
+               </p>
+            </div>
+            <!-- /footer-bottom-->
+        </footer>
+        <script type="text/javascript" src="/pac_static/ui/scripts/lib/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/lib/jquery-ui-1.8.6.custom.min.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/lib/json.min.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/lib/tiny_mce.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/lib/jquery.tinymce.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/opt/util.js"></script>
+        <script type="text/javascript" src="/pac_static/ui/scripts/opt/edit.js"></script>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %} &ndash; tipotcm</title>
+    <meta name="keywords" content="{% block metaKeywords %}{% endblock %}">
+    <meta name="description" content="{% block metaDescription %}{% endblock %}">
+    <link href="/ui/styles/default.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--[if IE 6]>
+            <link href="ie6fix.css" rel="stylesheet" type="text/css" />
+        <![endif]-->
+</head>
+<body id="index" class="home subpage1">
+
+<div id="wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="/">blog.tipotcm.com</a></h1>
+
+            <p>Lorem ipsum veroeros</p>
+        </div>
+        <div id="search">
+            <form method="get" action="">
+                <fieldset>
+                    <input type="text" name="query" value="" class="input-text"/>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="menu">
+        <nav>
+            <ul role="navigation">
+                {% for page in pageTree %}
+                    <li><a href="{{ page.pageModule.path }}" title="{{ page.pageModule.name }}">{{ page.pageModule.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+    <div id="header-title">
+        <h2>about code, simple as that</h2>
+    </div>
+    <div id="page" class="container">
+        {% block content %}
+        {% endblock %}
+        <div id="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+        <div class="clearfix">&nbsp;</div>
+    </div>
+    <div id="three-columns">
+        <div class="column1">
+            <h2>Nulla amet sed tempus</h2>
+
+            <p>Posted by Someone on March 22, 2010</p>
+
+            <p>Nullam et felis cursus tortor nisl ut sed purus. Quisque lorem. Sit amet lorem ipsum tempus sed
+                adipiscing lorem ipsum dolor consequat adipiscing. Lorem ipsum dolor sit amet blandit nullam tellus
+                adipiscing lorem ipsum nullam.</p>
+
+            <p class="hr1">&nbsp;</p>
+
+            <p><a href="#" class="comments">Comments (32)</a>&nbsp;&nbsp;&nbsp;<a href="#" class="more">More</a></p>
+        </div>
+        <div class="column2">
+            <h2>Veroeros imperdiet mollis</h2>
+            <ul class="style1">
+                <li><span>03.22.10</span> Nullam et felis tortor dolore sit amet nisl</li>
+                <li><span>03.20.10</span> Lorem sed sem aliquam lorem et veroeros</li>
+                <li><span>03.18.10</span> Sit amet ipsum tempus lorem consequat</li>
+                <li><span>03.14.10</span> Adipiscing sed ipsum consequat lorem sit</li>
+                <li><span>03.12.10</span> Amet nullam sed adipiscing tempus dolor</li>
+            </ul>
+        </div>
+        <div class="column3">
+            <ul class="style2">
+                <li><img src="/ui/images/homepage15.jpg" width="48" height="48" alt=""/>
+
+                    <p>Lorem sit amet blandit nullam sit dolore</p>
+
+                    <p class="time">2 hours ago</p>
+                </li>
+                <li><img src="/ui/images/homepage16.jpg" width="48" height="48" alt=""/>
+
+                    <p>Tempus sed blandit amet lorem aliquam</p>
+
+                    <p class="time">2 hours ago</p>
+                </li>
+                <li><img src="/ui/images/homepage17.jpg" width="48" height="48" alt=""/>
+
+                    <p>Nullam etiam et consequat adipiscing</p>
+
+                    <p class="time">8 hours ago</p>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+    </div>
+</div>
+<div id="footer">
+    <p>Copyright (c) 201! tipotcm inc. All Rights Reserved.</p>
+</div>
+
+<!--
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21187029-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>-->
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block title %} Settings {% endblock %}
+{% block content %}
+<div id="main">
+        <div class="post">
+            <div class="right">
+                {% if currentUser %}
+                    <h4>UpdateUser</h4>
+                {% else %}
+                    <h4>New user</h4>
+                {% endif %}
+                <form action="/edit/editViewAddUpdateUser" method="post" class="wide">
+                    <input type="hidden" name="user_string_key" value="{{ currentUser.key }}" />
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" value="{{ currentUser.username }}" />
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                    <label for="permissionLevel">Permission level</label>
+                    <select id="permissionLevel" name="permissionLevel">
+                        <option value="1"{% ifequal currentUser.permissionLevel 1 %} selected="selected"{% endifequal %}>Editor</option>
+                        <option value="2"{% ifequal currentUser.permissionLevel 2 %} selected="selected"{% endifequal %}>Administrator</option>
+                        <option value="3"{% ifequal currentUser.permissionLevel 3 %} selected="selected"{% endifequal %}>Superuser</option>
+                    </select>
+                    <p>
+                        <button>Save</button>
+                    </p>
+                </form>
+            </div>
+            <div class="left">
+                <div class="post-meta">
+                    <h4>Users</h4>
+                    <ul>
+                        {% for user in userList %}
+                            <li><a href="?item_id={{ user.itemId }}">{{ user.username }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="page-settings">
+            <h3>Sidebar</h3>
+            <p>Add a new page to the site by clicking the "New page" button below.</p>
+            <p><a class="button" href="/edit/Pages/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></p>
+         </div>
+        <div class="sidemenu">
+            <!--
+                        
+            <h3>Status</h3>
+            <ul>
+                <li><a href="http://www.stackoverflow.com" title="Website Templates">Stackoverflow <br />
+                    <span>WEI</span></a>
+                </li>
+                <li><a href="http://www.stackoverflow.com" title="Website Templates">Stackoverflow <br />
+                    <span>WEI</span></a>
+                </li>
+            </ul>
+            -->
+        </div>
+    </aside>
+{% endblock %}

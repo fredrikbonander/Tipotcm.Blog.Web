@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+    <div id="main">
+        <div class="post">
+            <div class="right">
+                <h4>New page</h4>
+                <p>Here you can create a new page.</p>
+                <ul>
+                    <li><strong>Page name:</strong> This is the name of the new page. The name you set here is ONLY visible in Edit.</li>
+                    <li><strong>Page template:</strong> Select which template you want to use for the new page. Each template contains different functionality and looks different in the main site.</li>
+                    <li><strong>Page parent:</strong> Select which parent the new page will have. This is used to determine where in the page tree the new page should be placed. If you wan to place at the very top select "PageTree root".</li>
+                </ul>
+                <div id="tabs_no_style">
+                    <form action="/edit/editViewAddNewPage" class="wide" method="post">
+                        <fieldset>
+                            <label for="page_name">Page name:</label>
+                            <input type="text" name="page_name" id="page_name" />
+                            <label for="page_template">Page template:</label>
+                            <select name="page_template" id="page_template">
+                                <option value="-1"><em>Select page template</em></option>
+                                {% for template in templatesList %}
+                                    {% ifequal template "Pac.UI.PageTemplates.PageContainer" %}
+                                        {% ifequal userContext.user.permissionLevel 3 %}
+                                        <option value="{{ template }}">{{ template.templateName }}</option>
+                                        {% endifequal %}
+                                    {% else %}
+                                        <option value="{{ template }}">{{ template.templateName }}</option>
+                                    {% endifequal %}
+                                {% endfor %}
+                            </select>
+                            <label for="page_parent_key">Page parent:</label>
+                            <select name="page_parent_key" id="page_parent_key">
+                                <option value="-1"><em>Select page parent</em></option>
+                                <option value="0">PageTree root</option>
+                                {% for item in pageTree %}
+                                    <option value="{{ item.page.key }}">- {{ item.page.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </fieldset>
+                        <button>Save new page</button>
+                    </form>
+                </div>
+            </div>
+            <div class="left">
+                <div class="post-meta">
+                    <h4>PageTree</h4>
+                    {% PageTree pageTree currentView %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="page-settings">
+            <h3>Sidebar</h3>
+            <p>Add a new page to the site by clicking the "New page" button below.</p>
+            <p><a class="button" href="/edit/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></p>
+        </div>
+    </aside>
+{% endblock %}

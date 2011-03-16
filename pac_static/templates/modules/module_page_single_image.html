@@ -1,0 +1,11 @@
+<label for="select_single_image_button|{{ language }}">Select {{ module.name }} Image</label>
+<input id="imageId_{{ language }}" type="hidden" name="{{ module.name }}|singleImage|{{ module.itemId }}|{{ language }}" value="{{ data.itemId }}" />
+<button class="select_single_image_button" id="select_single_image_button|{{ language }}" type="button">Select Image</button>
+<span id="selected_image_{{ language }}">{% if data.name %}Selected Image: {{ data.name }}{% endif %}</span>
+<div class="hide select_single_image" id="select_single_image_{{ language }}">
+    <ul>
+        {% for image in module.imageList %}
+            <li><a href="javascript:void(0)" rel="{{ image.itemId }}_{{ language }}"><img src="{{ image.imageUrl }}=s144" alt="{{ image.name }}" title="{{ image.name }}" /><br /><span>{{ image.name }}</span></a></li>
+        {% endfor %}
+    </ul>
+</div>

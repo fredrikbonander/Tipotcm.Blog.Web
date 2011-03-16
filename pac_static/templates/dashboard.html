@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+<div id="main">
+        <div class="post">
+            <div class="right">
+                <h4>Dashboard</h4>
+                <p>If you want to edit content on a page, <a href="/edit/Pages/">click here.</a></p>
+                <p>To add a new blog post, select the blog page you want to publish your blog post to below:</p>
+                <ul>
+                    {% for page in blogPages %}
+                    <li><a href="/edit/Pages/?item_id={{ page.itemId }}#new-blog-post">{{ page.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="left">
+                <div class="post-meta">
+                    <h4>Direct links</h4>
+                    <ul>
+                        <li><a href="http://www.martinadlerphotography.com/en-us/?pagerefresh=true" title="Martin Adler Photography">Refresh startpage</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="page-settings">
+            <h3>Sidebar</h3>
+            <p>Add a new page to the site by clicking the "New page" button below.</p>
+            <p><a class="button" href="/edit/Pages/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></p>
+         </div>
+        <div class="sidemenu">
+            <h3>Useful links</h3>
+            <ul>
+                <li><a href="http://www.martinadlerphotography.com/" title="Martin Adler Photography">Martin Adler Photography<br />
+                    <span>Go to main site</span></a>
+                </li>
+                <li><a href="http://www.google.com/analytics/" title="Google Analytics">Google Analytics <br />
+                    <span>See statistics</span></a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+{% endblock %}

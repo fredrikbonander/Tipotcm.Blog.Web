@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block title %}{{ pageContent.MainHeading }}{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="box3" class="box-style1">
+            <div>
+                <h3>{{ pageTemplate.currentBlogPost.title }}</h3>
+                {% autoescape off %}
+                    {{ pageTemplate.currentBlogPost.content }}
+                {% endautoescape %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block sidebar %}
+    <div class="box-style2">
+        <h2 class="title">{{ pageContent.MainHeading }}</h2>
+        <ul>
+            {% for post in pageTemplate.blogList %}
+                <li><a href="?blog_post_id={{ post.itemId }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

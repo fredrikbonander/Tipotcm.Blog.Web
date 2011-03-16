@@ -1,0 +1,32 @@
+application: tipotcm-blog
+version: 1-0-1-1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /media/
+  static_dir: media
+
+- url: /favicon.ico
+  static_files: ui/images/favicon.ico
+  upload: ui/images/favicon.ico
+
+- url: /robots.txt
+  static_files: ui/robots.txt
+  upload: ui/robots.txt
+
+- url: /ui
+  static_dir: ui
+
+- url: /pac_static/ui
+  static_dir: pac_static/ui
+
+- url: /stats.*
+  script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
+
+- url: /edit/
+  script: main.py
+  secure: always
+
+- url: .*
+  script: main.py

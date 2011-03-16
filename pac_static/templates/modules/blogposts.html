@@ -1,0 +1,25 @@
+{% if pageTemplate.currentBlogPost %}
+    <h4>Update blog post: {{ pageTemplate.currentBlogPost.title }}</h4>
+{% else %}
+    <h4><a name="new-blog-post">New blog post</a></h4>
+{% endif %}
+{% for name, blogPost in pageTemplate.blogPosts.iteritems %}
+    {% ifequal name market.language %}
+        <form action="/edit/editViewUpdateBlogPost" class="wide" method="post">
+            <input type="hidden" name="page_module_string_key" value="{{ pageModule.key }}" />
+            <input type="hidden" name="blog_post_string_key" value="{{ pageTemplate.currentBlogPost.key }}" />
+            <input type="hidden" name="language" value="{{ market.language }}" />
+            <label for="blog_title_{{ market.language }}">Title</label>
+            <input type="text" id="blog_title_{{ market.language }}" name="title" value="{{ pageTemplate.currentBlogPost.title }}" />
+            <label for="blog_content_{{ market.language }}">Content</label>
+            <textarea id="blog_content_{{ market.language }}" name="content">{{ pageTemplate.currentBlogPost.content }}</textarea>
+            <button class="save">Save Blog post</button>
+        </form>
+        <h4>Blog posts</h4>
+        <ul class="blog_list">
+            {% for post in blogPost %}
+                <li><a href="?item_id={{ itemId }}&blog_post_id={{ post.itemId }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endifequal %}
+{% endfor %}

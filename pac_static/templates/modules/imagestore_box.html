@@ -1,0 +1,26 @@
+
+<form action="{{ uploadUrl }}" enctype="multipart/form-data" class="wide" method="post">
+    <input type="hidden" name="imagestore_key" value="{{ currentImage.imageEntry.key }}" />
+    <label for="image_name">Image name</label>
+    <input id="image_name" type="text" name="image_name" value="{{ currentImage.imageEntry.name }}" />
+    <label for="image_referance">Image referance</label>
+    <input id="image_referance" type="text" name="image_referance" value="{{ currentImage.imageEntry.imageReferance }}" />
+    {% for market in markets %}
+        <label for="image_description_{{ market.language }}">Image description - {{ market.language }}</label>
+        {% for description in currentImage.imageDescription %}
+            {% ifequal description.lang market.language %}
+                <textarea id="image_description_{{ market.language }}" name="image_description_{{ market.language }}">{{ description.description }}</textarea>
+            {% endifequal %}
+        {% empty %}
+            <textarea id="image_description_{{ market.language }}" name="image_description_{{ market.language }}"></textarea>
+        {% endfor %}
+    {% endfor %}
+    {% if currentImage.imageEntry.imageUrl %}
+        <span><img alt="{{ currentImage.imageEntry.name }}" src="{{ currentImage.imageEntry.imageUrl }}=s454" /></span>
+    {% endif %}
+    <label for="image_file">Image</label>
+    <input id="image_file" type="file" name="image_file" />
+    <p>
+        <button>Save</button>
+    </p>
+</form>

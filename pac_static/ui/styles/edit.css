@@ -1,0 +1,122 @@
+/*
+    Variable Grid System.
+    Learn more ~ http://www.spry-soft.com/grids/
+    Based on 960 Grid System - http://960.gs/
+
+    Licensed under GPL and MIT.
+*/
+
+/* HTML tags
+----------------------------------------------------------------------------------------------------*/
+html, body { background-color: #fff; height: 100%; margin: 0; padding: 0; width: 100%; }
+body { background-repeat: repeat-x; color: #222; font-family: Arial, sans-serif; font-size: 12px;}
+
+a { color: #222; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; text-decoration: none; }
+a img { border: none;}
+a:hover { text-decoration: underline; }
+a span { font-size: 10px; font-weight: normal;}
+
+input { background-color: #f3f3f3; border: 1px solid #222; color: #5c5c5c; font-size: 10px; height: 13px; padding: 5px; }
+input[type=checkbox] { position: relative; top: 2px; }
+input[type=file] { background-color: transparent; border: none; height: 20px; }
+textarea { background-color: #f3f3f3; border: 1px solid #222; color: #5c5c5c; }
+button { background: none; border: none; color: #5c5c5c; cursor: pointer; font-weight: bold; }
+button span.ui-icon { display: inline-block; height: 13px; position: relative; top: 1px; }
+h1 { font-size: 24px; font-weight: bold; margin: 12px 0; }
+h1 a { color: #222; font-size: 24px; }
+h2 { font-size: 14px; font-weight: bold; margin: 0 0 7px 0; }
+h2 a { color: #222; font-size: 14px; }
+h3 { font-size: 12px; font-weight: bold; margin: 0 0 6px 0; }
+h3 a { color: #222; font-size: 12px; }
+h4 { font-size: 10px; font-weight: bold; margin: 0 0 5px 0; }
+h4 a { color: #222; font-size: 10px; }
+
+ul, ul li { margin: 0; list-style: none; padding: 0; }
+
+/* CSS styles classes
+----------------------------------------------------------------------------------------------------*/
+.oh { overflow: hidden; }
+.hide { display: none; }
+.floatLeft { float: left; }
+.floatRight { float: right; }
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_16 { margin-left: auto; margin-right: auto; padding-top: 20px; width: 960px; }
+section.container_16 { display: block; }
+section > .container_16 { overflow: hidden; }
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16 { display:inline; float: left; position: relative; margin-left: 10px; margin-right: 10px; }
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+.alpha { margin-left: 0; }
+.omega { margin-right: 0; }
+
+.twoCols > .col:first-child + .col + .col
+
+/* Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_16 .grid_1 { width:40px; }
+.container_16 .grid_2 { width:100px; }
+.container_16 .grid_3 { width:160px; }
+.container_16 .grid_4 { width:220px; }
+.container_16 .grid_5 { width:280px; }
+.container_16 .grid_6 { width:340px; }
+.container_16 .grid_7 { width:400px; }
+.container_16 .grid_8 { width:460px; }
+.container_16 .grid_9 { width:520px; }
+.container_16 .grid_10 { width:580px; }
+.container_16 .grid_11 { width:640px; }
+.container_16 .grid_12 { width:700px; }
+.container_16 .grid_13 { width:760px; }
+.container_16 .grid_14 { width:820px; }
+.container_16 .grid_15 { width:880px; }
+.container_16 .grid_16 { width:940px; }
+
+
+.grid_11.ui-widget { padding: 10px; }
+
+/* Navigation
+----------------------------------------------------------------------------------------------------*/
+.top { border: none; color: #222; }
+.top a { color: #222; }
+.top .fade{
+    background: -moz-linear-gradient(rgba(255,255,255, 0.8), rgba(255,255,255,0));
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    border-bottom: 1px dotted #ddd;
+    height: 68px;
+}
+.top .fade > section { padding-top: 13px; }
+/* nav > ul { overflow: hidden; } */
+/*nav { margin-top: 10px; }
+nav > ul { float: right; }
+nav > ul > li { background: #f3f3f3; border: 1px dotted #ddd; border-bottom: none; float: left; height: 16px; margin-left: 10px; padding: 12px 10px 9px; line-height: 16px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; -webkit-border-radius: 10px; }
+nav > ul > li.active { background-color: #fff; height: 17px; -moz-box-shadow: 0 -5px 6px rgba(221, 221, 221, 0.5); }
+*/
+
+#header h1 img { background: none; }
+
+.grid_4 li { padding: 2px 0; }
+.grid_4 ul ul li { margin-left: 10px; }
+
+/* Content
+----------*/
+.content_box { background: #fff; height: 40px; padding: 20px 0; margin-top: -28px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; -moz-box-shadow: 0 -3px 6px rgba(200, 200, 200, 0.8); }
+.content { background: #fff; margin: 1px; padding: 0 10px; }
+.content > .grid_4 { width: 198px; }
+
+.actions a { cursor: pointer; display: block; padding: .4em 1em .4em 20px; text-decoration: none; position: relative; width: 80px; }
+.actions a span.ui-icon {margin: -8px 5px 0 0; position: absolute;left: .2em; top: 50%; }
+
+
+/* Tabs
+----------*/
+#tabs_no_style ul li { display: inline-block; }
+
+/* form
+----------*/
+form fieldset { border: none; margin: 0; overflow: hidden; padding: 0; }
+form label { clear: left; height: 25px; line-height: 25px; margin-bottom: 10px; }
+form label, form input[type=text], form select { display: block; float: left; width: 150px; }

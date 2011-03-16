@@ -1,0 +1,54 @@
+<h4>Update {{ currentView.currentPage.name }}</h4>
+<p>Here you update your content. Keep in mind what language you're editing. Click the language codes below to switch between languages. Bright color means active.</p>
+<ul>
+    <li><strong>Page name:</strong> This is the name of the page for the language selected. The name you enter here will be the name on the site and in menus.</li>
+</ul>
+<div id="update_page">
+    <ul id="update_page_tabs">
+        {% for market in markets %}
+            <li><a class="button{% ifequal forloop.counter 1 %} active{% endifequal %}" href="#{{ market.language }}">{{ market.language }}</a></li>
+        {% endfor %}
+    </ul>
+    {% for market in markets %}
+    <div id="{{ market.language }}"{% ifnotequal forloop.counter 1 %} class="hide"{% endifnotequal %}>
+        <form action="/edit/editViewUpdatePage" class="wide" method="post">
+            <input type="hidden" name="language" value="{{ market.language }}" />
+            <input type="hidden" name="page_string_key" value="{{ pageTemplate.pageKey }}" />
+            <label for="page_module_name_{{ market.language }}">Page name</label>
+            {% for name, pageModule in pageTemplate.pageModules.iteritems %}
+                {% ifequal name market.language %}
+                    <input type="text" id="page_module_name_{{ market.language }}" name="page_module_name" value="{{ pageModule.name }}" />
+                {% endifequal %}
+            {% endfor %}
+            {% for module in pageTemplate.modules %}
+                {% ifequal module.type "static"%}
+                    {% Module module market.language forloop.counter %}
+                {% endifequal %}
+                {% ifequal module.type "singleImage"%}
+                    {% Module module market.language forloop.counter %}
+                {% endifequal %}
+                {% ifequal module.type "multipleImage"%}
+                    {% Module module market.language forloop.counter %}
+                {% endifequal %}
+            {% endfor %}
+            {% for name, pageModule in pageTemplate.pageModules.iteritems %}
+                {% ifequal name market.language %}
+                    <label><input type="checkbox" name="publish"{% if pageModule.published %} checked="checked"{% endif %}/> Display in menus?</label>
+                    <button class="save">Save {{ pageModule.name }}</button>
+                {% endifequal %}
+            {% endfor %}
+        </form>
+        {% ifequal pageTemplate.templateName 'BlogPage' %}
+            {% for name, pageModule in pageTemplate.pageModules.iteritems %}
+                {% ifequal name market.language %}
+                    {% if pageModule.key %}
+                        {% include "modules/blogposts.html" %}
+                    {% else %}
+                        <p>You need to save the page before adding blog posts</p>
+                    {% endif %}
+                {% endifequal %}
+            {% endfor %}
+        {% endifequal %}
+    </div>
+    {% endfor %}
+</div>

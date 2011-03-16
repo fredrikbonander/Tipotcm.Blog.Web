@@ -1,0 +1,13 @@
+<label for="select_multiple_image_button|{{ language }}">Select Images</label>
+<input id="multipleImages_list_{{ language }}" type="hidden" name="{{ module.name }}|multipleImages|{{ module.itemId }}|{{ language }}" value="{{ data.imageStringIdList }}" />
+<button class="select_images_btn" id="select_multiple_image_button|{{ language }}" type="button">Select multiple images{% if data %} ({{ data.imageCount }} images selected){% endif %}</button>
+<div class="image_list_wrapper hide" id="image_list_wrapper_{{ language }}">
+    <div class="list_area">
+        <ul id="image_list_{{ language }}_all" class="image_list image_list_connector_{{ language }}">
+            {% for image in module.imageList %}
+                <li id="listItem_{{ image.itemId }}_{{ language }}"><a href="javascript:void(0)" rel="{{ image.itemId }}_{{ language }}"><img src="{{ image.imageUrl }}=s144" alt="{{ image.name }}" title="{{ image.name }}" /><br /><span>{{ image.name }}</span></a></li>
+            {% endfor %}
+        </ul>
+        <button type="button" lang="{{ language }}">Add selected images</button>
+    </div>
+</div>

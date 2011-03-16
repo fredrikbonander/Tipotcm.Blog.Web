@@ -1,0 +1,20 @@
+<nav id="nav" class="grid_10" role="navigation">
+    <ul>
+        {% if userContext.user.authenticated %}
+            <li{% ifequal path 'Dashboard' %} class="active"{% endifequal %}><a href="/edit/Dashboard/">Dashboard</a></li>
+            <li{% ifequal path 'Pages' %} class="active"{% endifequal %}><a href="/edit/Pages/">Pages</a></li>
+            <li{% ifequal path 'ImageStore' %} class="active"{% endifequal %}><a href="/edit/ImageStore/">ImageStore</a></li>
+            {% ifequal userContext.user.permissionLevel 3 %}
+            <li{% ifequal path 'Settings' %} class="active"{% endifequal %}><a href="/edit/Settings/">Settings</a></li>
+            {% endifequal %}
+            {% ifequal userContext.user.permissionLevel 2 %}
+            <li{% ifequal path 'Settings' %} class="active"{% endifequal %}><a href="/edit/Settings/">Settings</a></li>
+            {% endifequal %}
+            <li class="float-right">
+                <form action="/edit/editViewLogOut" method="post">
+                    <button>Logout</button>
+                </form>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

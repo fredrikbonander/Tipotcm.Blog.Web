@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% block title %} ImageStore {% endblock %}
+{% block content %}
+    <div id="main">
+        <div class="post">
+            <!--<div class="actions"><a class="floatRight ui-state-default ui-corner-all" href="/edit/NewPage/"><span class="ui-icon ui-icon-plus"></span>New page</a></div>-->
+            <div class="right">
+                <p>
+                    Add your images here that you want to use in the different pages across your site.
+                    Remember that you only upload and manage your images here. You still need to assign them to the different pages using the buttons called "Select Image" and "Select multiple images".
+                    Each button may not appear one each page. This is due to how the different page templates look.
+                </p>
+                {% include "modules/imagestore_box.html" %}
+            </div>
+            <div class="left">
+                <div class="post-meta">
+                    <h4>Images</h4>
+                    <ul>
+                    {% for item in imageList %}
+                        <li{% ifequal currentView.itemId item.page.key.id|stringformat:"s" %} class="active"{% endifequal %}>
+                            <a href="/edit/ImageStore/?item_id={{ item.key.id }}"><span class="ui-icon ui-icon-document"></span>{{ item.name }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside id="sidebar">
+        <div class="page-settings">
+            <h3>Sidebar</h3>
+            <p>Add a new image to the site by clicking the "New image" button below.</p>
+            <p><a class="button" href="/edit/ImageStore/"><span class="ui-icon ui-icon-plus"></span>New image</a></p>
+         </div>
+        {% if currentImage %}
+        <div class="sidemenu">
+            <h3>Image Delete</h3>
+            <ul>
+                <li>
+                    <form action="/edit/editViewDeleteImage" method="post">
+                        <input type="hidden" name="image_string_key" value="{{ currentImage.imageEntry.key }}" />
+                        <span>If you delete this page all content will also be lost. This action is not reversible.</span>
+                        <button>Delete</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </aside>
+{% endblock %}
