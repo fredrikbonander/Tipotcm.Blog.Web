@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block title %}{{ pageContent.MainHeading }}{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="box1" class="box-style1">
+            <h2 class="title">{{ pageContent.MainHeading }}</h2>
+            <div>
+                {% autoescape off %}
+                    {{ pageContent.MainTextBox }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    <div class="image_wrapper">
+        <img src="{{ pageContent.StartPageImage.url }}=s220" />
+    </div>
+{% endblock %}

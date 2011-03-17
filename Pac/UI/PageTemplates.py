@@ -97,9 +97,7 @@ class StartPage(BaseTemplate):
     def addModules(self):
         self.modules.append(TemplateModules.getStandardHeading(self, 'MainHeading'))
         self.modules.append(TemplateModules.getStandardTextBox(self, 'MainTextBox'))
-        self.modules.append(TemplateModules.getStandardTextBox(self, 'CopyrightTextBox'))
-        self.modules.append(TemplateModules.getStandardHeading(self, 'MetaKeywords'))
-        self.modules.append(TemplateModules.getStandardHeading(self, 'MetaDescription'))
+        self.modules.append(TemplateModules.getSingleImageModule(self, 'MainImage'))
 
 class ContactPage(BaseTemplate):
     templateName = 'ContactPage'
