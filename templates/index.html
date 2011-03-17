@@ -37,7 +37,7 @@
         </nav>
     </div>
     <div id="header-title">
-        <h2>about code, simple as that</h2>
+        <h2>the keys are like right next to each other...</h2>
     </div>
     <div id="page" class="container">
         {% block content %}
@@ -73,25 +73,19 @@
             </ul>
         </div>
         <div class="column3">
+            <h2>@fbonander</h2>
+
+
             <ul class="style2">
-                <li><img src="/ui/images/homepage15.jpg" width="48" height="48" alt=""/>
+                {% for feed in pageTemplate.twitterFeed %}
+                    <li>
+                        <img src="{{ feed.user.profile_image_url }}" alt="{{ feed.user.name }}" />
+                        <time datetime="{{ feed.created_at }}"> {{ feed.created_at }}</time>
+                        <p>{{ feed.text }}</p>
 
-                    <p>Lorem sit amet blandit nullam sit dolore</p>
-
-                    <p class="time">2 hours ago</p>
-                </li>
-                <li><img src="/ui/images/homepage16.jpg" width="48" height="48" alt=""/>
-
-                    <p>Tempus sed blandit amet lorem aliquam</p>
-
-                    <p class="time">2 hours ago</p>
-                </li>
-                <li><img src="/ui/images/homepage17.jpg" width="48" height="48" alt=""/>
-
-                    <p>Nullam etiam et consequat adipiscing</p>
-
-                    <p class="time">8 hours ago</p>
-                </li>
+                    </li>
+                {% endfor %}
+                
             </ul>
         </div>
         <div class="clearfix">&nbsp;</div>
@@ -101,10 +95,10 @@
     <p>Copyright (c) 201! tipotcm inc. All Rights Reserved.</p>
 </div>
 
-<!--
 <script type="text/javascript">
+
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21187029-1']);
+  _gaq.push(['_setAccount', 'UA-22115447-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -112,6 +106,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>-->
+
+</script>
 </body>
 </html>

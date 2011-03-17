@@ -97,16 +97,18 @@ ul.style2 {
 }
 
 ul.style2 li {
-	height: 50px;
 	min-height: 50px;
 	margin: 0px 0px 10px 0px;
 	padding: 11px;
 	background: url(/ui/images/bg2_06.png);
 }
 
+ul.style2 li p { font-size: 12px; line-height: 16px; margin-bottom: 5px; }
+ul.style2 li time { font-style: italic; }
+
 ul.style2 img {
 	float: left;
-	margin-right: 15px;
+	margin: 0 10px 10px 0;
 }
 
 ul.style2 p {
@@ -500,7 +502,7 @@ ul.style2 .time {
 	padding: 0px;
 }
 
-#three-columns .column2 h2 {
+#three-columns .column2 h2, #three-columns .column3 h2 {
 	margin: 0px;
 	padding: 0px;
 	letter-spacing: -1px;

@@ -1,4 +1,6 @@
 __author__ = 'broken'
+from google.appengine.api import urlfetch
+from django.utils import simplejson as json
 
 from Pac.UI import ContentModules
 from Pac.UI import PageModules
@@ -191,6 +193,12 @@ class BlogPage(BaseTemplate):
         self.pageData = self.parsePageData(pageData)
         self.modules = []
 
+    def preRender(self, query):
+        if query.getvalue('blog_post_id'):
+            self.currentBlogPost = Blog.getPostById(query.getvalue('blog_post_id'))
+        else:
+            self.currentBlogPost = Blog.getLatestBlogPost()
+
     def postRender(self, language, query):
         if language in self.blogPosts:
             self.blogList = self.blogPosts[language]
@@ -201,6 +209,13 @@ class BlogPage(BaseTemplate):
         else:
             self.currentBlogPost = Blog.getLatestBlogPost()
 
+        # Twitter feed
+        ## http://api.twitter.com/1/statuses/user_timeline.json?screen_name=noradio
+        twitterFeedUrl = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=fbonander&count=5&include_rts=true"
+        result = urlfetch.fetch(url=twitterFeedUrl)
+        if result.status_code == 200:
+            self.twitterFeed = json.loads(result.content)
+            
     def addModules(self):
         self.modules.append(TemplateModules.getStandardHeading(self, 'MainHeading'))
 

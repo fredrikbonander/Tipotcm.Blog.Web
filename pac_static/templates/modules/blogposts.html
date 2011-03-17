@@ -12,7 +12,10 @@
             <label for="blog_title_{{ market.language }}">Title</label>
             <input type="text" id="blog_title_{{ market.language }}" name="title" value="{{ pageTemplate.currentBlogPost.title }}" />
             <label for="blog_content_{{ market.language }}">Content</label>
-            <textarea id="blog_content_{{ market.language }}" name="content">{{ pageTemplate.currentBlogPost.content }}</textarea>
+            <div id="wmd-button-bar" class="wmd-panel"></div>
+            <textarea class="wmd-panel wmd-input" id="blog_content_{{ market.language }}" name="content">{{ pageTemplate.currentBlogPost.content }}</textarea>
+            <br />
+            <div id="wmd-preview" class="wmd-panel"></div>
             <button class="save">Save Blog post</button>
         </form>
         <h4>Blog posts</h4>

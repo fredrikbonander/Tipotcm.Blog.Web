@@ -1,8 +1,7 @@
 /*global jQuery*/
 "use strict";
-(function() {
-    var window = this,
-        document = window.document,
+(function(window) {
+    var document = window.document,
         $ = jQuery,
         model,
         view;
@@ -11,7 +10,7 @@
         init : function () {
             $('input').attr('autocomplete', 'off');
         },
-        
+        /**
         editor : {
             init : function () {
                 
@@ -32,7 +31,7 @@
                     paste_use_dialog: true,
                     width: '474',
                     height: '212',
-                    theme_advanced_buttons1: 'bold,italic,underline,strikethrough,bullist,numlist, exlink',
+                    theme_advanced_buttons1: 'bold,italic,underline,strikethrough,bullist,numlist, exlink, code',
                     theme_advanced_buttons2: '',
                     theme_advanced_buttons3: '',
                     theme_advanced_toolbar_location: 'top',
@@ -149,7 +148,7 @@
                 
                 tinymce.PluginManager.add('exlink', tinymce.plugins.exlink);
             }
-        },
+        },**/
         /**
         * Setup ui interaction
         * @base view
@@ -537,4 +536,4 @@
         $.runInit($.view);
     });
 
-} ());
+} (window));
