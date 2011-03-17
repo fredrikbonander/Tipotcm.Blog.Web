@@ -90,14 +90,9 @@ class StartPage(BaseTemplate):
     #Template to use for main view
     templateFile = 'startpage.html'
 
-    def postRender(self, language, query):
-        if language in self.pageData and 'MainImage' in self.pageData[language] and self.pageData[language]['MainImage'] != '':
-            self.pageData[language]['StartPageImage'] = ImageStore.getImageWithDescription(self.pageData[language]['MainImage'], language)
-
     def addModules(self):
         self.modules.append(TemplateModules.getStandardHeading(self, 'MainHeading'))
         self.modules.append(TemplateModules.getStandardTextBox(self, 'MainTextBox'))
-        self.modules.append(TemplateModules.getSingleImageModule(self, 'MainImage'))
 
 class ContactPage(BaseTemplate):
     templateName = 'ContactPage'
